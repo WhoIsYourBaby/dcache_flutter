@@ -4,9 +4,9 @@
 Pod::Spec.new do |s|
   s.name             = 'dcache_flutter'
   s.version          = '0.0.1'
-  s.summary          = 'A cache library for Dio.'
+  s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC
-A cache library for Dio.
+A new flutter plugin project.
                        DESC
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }
