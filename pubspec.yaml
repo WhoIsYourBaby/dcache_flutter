@@ -1,5 +1,5 @@
 name: dcache_flutter
-description: A cache library for Dio.
+description: Dcache_flutter is a library for Dio. Dcache_flutter uses sqflite as disk cache and we consider that memery cache is unnecessary. It is used in our product. It is fully tested and stable. Maybe it's useful for you too.
 version: 1.0.2
 author: ligun <376438624@qq.com>
 homepage: https://github.com/ligun123/dcache_flutter
