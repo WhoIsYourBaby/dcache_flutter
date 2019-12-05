@@ -6,3 +6,7 @@
 ## 1.0.1
 
 * Fix error of cocoapods.
+
+## 1.0.2
+
+* iOS, swift -> Objc.
