@@ -30,7 +30,7 @@ class DCache extends Interceptor {
   }
 
   @override
-  FutureOr<dynamic> onRequest(RequestOptions options) async {
+  Future onRequest(RequestOptions options) async {
     String key = getKeyOf(options);
     final optOfRequest = DCacheOptions.fromJson(options.extra);
     final optMerged = this.options.merge(optOfRequest);
@@ -46,20 +46,20 @@ class DCache extends Interceptor {
   }
 
   @override
-  FutureOr<dynamic> onResponse(Response response) {
+  Future onResponse(Response response) {
     if (this.ignoreFunc(response)) {
-      return response;
+      return Future.value(response);
     }
     String key = getKeyOf(response.request);
     final optOfRequest = DCacheOptions.fromJson(response.extra);
     final optMerged = this.options.merge(optOfRequest);
     this.storage.setResponse(
         key: key, response: response, age: optMerged.age ?? Duration(days: 1));
-    return response;
+    return Future.value(response);
   }
 
   @override
-  FutureOr<dynamic> onError(DioError err) async {
+  Future onError(DioError err) async {
     final key = getKeyOf(err.request);
     final optOfRequest = DCacheOptions.fromJson(err.request.extra);
     final optMerged = this.options.merge(optOfRequest);

@@ -8,7 +8,8 @@ class DioManager {
 
   static Dio getInstance() {
     if (_dioInstance == null) {
-      final opt = BaseOptions(contentType: ContentType.json);
+      // default contentType is json.
+      final opt = BaseOptions();
       _dioInstance = Dio(opt);
       // _dioInstance.httpClientAdapter = DefaultHttpClientAdapter()
       //   ..onHttpClientCreate = (client) {

@@ -122,7 +122,7 @@ class _BookListViewState extends State<BookListView> {
     // Set a short enough timeout to cause a timeout error.
     // Then the cache data will be loaded.
     final mayTimeoutError = Random().nextBool() ? 1 : 1000;
-    final reqOptions = Options(connectTimeout: mayTimeoutError);
+    final reqOptions = Options(sendTimeout: mayTimeoutError);
     if (option != null) {
       reqOptions.extra = option.toJson();
     }

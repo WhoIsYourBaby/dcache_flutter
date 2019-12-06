@@ -66,14 +66,6 @@ class DSqliteStorage extends DCacheStorage {
     await db.execute('delete from dcache where ?>=expired', [now]);
   }
 
-  Map<String, dynamic> _buildHeaderMap(HttpHeaders header) {
-    final map = Map<String, dynamic>();
-    header.forEach((key, values) {
-      map[key] = values;
-    });
-    return map;
-  }
-
   @override
   Future<Response> getResponse({String key}) async {
     final now = DateTime.now().millisecondsSinceEpoch;
@@ -86,7 +78,7 @@ class DSqliteStorage extends DCacheStorage {
       data = this.encoder == null ? data : this.encoder.decode(data);
       String headerStr = first['header'] as String;
       headerStr = this.encoder == null ? headerStr : this.encoder.decode(headerStr);
-      final headers = DioHttpHeaders.fromMap(jsonDecode(headerStr));
+      final headers = Headers.fromMap(jsonDecode(headerStr));
       final code = first['code'] as int;
       final msg = first['message'] as String;
       String extraStr = first['extra'] as String;
@@ -125,7 +117,7 @@ class DSqliteStorage extends DCacheStorage {
     }
     data = this.encoder == null ? data : this.encoder.encode(data);
     final header = response.headers;
-    final headerMap = _buildHeaderMap(header);
+    final headerMap = header.map;
     String headerStr = jsonEncode(headerMap);
     headerStr = this.encoder == null ? headerStr : this.encoder.encode(headerStr);
     final url =
