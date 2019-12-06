@@ -10,7 +10,9 @@ Dcache_flutter is a library for [Dio ( http client for flutter )](https://github
 dependencies:
   dcache_flutter: 1.0.2 #latest version
 ```
-> dcache 1.0.0 is supported for dio 2.x
+
+> dcache 1.0.x is supported for dio 2.x
+dcache 1.1.x is supported for dio 3.x
 
 ### Super simple to use
 
