@@ -10,3 +10,7 @@
 ## 1.0.2
 
 * iOS, swift -> Objc.
+
+## 1.0.3
+
+* Fix android error.
