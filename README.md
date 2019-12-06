@@ -29,6 +29,11 @@ final cacheInterceptor = DCache(
     options: cacheDefaultOption,
 );
 dioInstance.interceptors.add(cacheInterceptor);
+
+// clear cache
+cacheInterceptor.storage.clearExpired();
+// or
+// cacheInterceptor.storage.clearAll();
 ```
 - DCacheEncoder: Encode and decode the key content of the response. It has a subclass named DBase64Encoder. Of course you can customize the encoder by inheriting DCacheEncoder, such as encryption.
 - DSqliteStorage: Store the response in sqlite. You can implement your own storage by inheriting DCacheStorage.
