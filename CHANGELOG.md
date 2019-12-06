@@ -10,3 +10,7 @@
 ## 1.0.2
 
 * iOS, swift -> Objc.
+
+## 1.1.0
+
+* Support for dio 3.x.
