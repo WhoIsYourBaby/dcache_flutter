@@ -21,3 +21,7 @@
 ## 1.1.1
 
 * Fix android package id error.
+
+## 1.1.2
+
+* Fix the header build error.
