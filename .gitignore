@@ -6,3 +6,4 @@
 
 build/
 dcache.code-workspace
+.flutter-plugins-dependencies
