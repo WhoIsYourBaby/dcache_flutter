@@ -77,12 +77,21 @@ class DSqliteStorage extends DCacheStorage {
       dynamic data = first['data'];
       data = this.encoder == null ? data : this.encoder.decode(data);
       String headerStr = first['header'] as String;
-      headerStr = this.encoder == null ? headerStr : this.encoder.decode(headerStr);
-      final headers = Headers.fromMap(jsonDecode(headerStr));
+      headerStr =
+          this.encoder == null ? headerStr : this.encoder.decode(headerStr);
+      final Map<String, dynamic> headerMap = jsonDecode(headerStr);
+      final listMap = headerMap.map<String, List<String>>(
+        (k, v) => MapEntry(
+          k,
+          (v as List<dynamic>).map<String>((f) => (f as String)).toList(),
+        ),
+      );
+      final headers = Headers.fromMap(listMap);
       final code = first['code'] as int;
       final msg = first['message'] as String;
       String extraStr = first['extra'] as String;
-      extraStr = this.encoder == null ? extraStr : this.encoder.decode(extraStr);
+      extraStr =
+          this.encoder == null ? extraStr : this.encoder.decode(extraStr);
       final extra = jsonDecode(extraStr) as Map<String, dynamic>;
       extra['fromCache'] = true;
       final responseType = first['responseType'] as int;
@@ -119,7 +128,8 @@ class DSqliteStorage extends DCacheStorage {
     final header = response.headers;
     final headerMap = header.map;
     String headerStr = jsonEncode(headerMap);
-    headerStr = this.encoder == null ? headerStr : this.encoder.encode(headerStr);
+    headerStr =
+        this.encoder == null ? headerStr : this.encoder.encode(headerStr);
     final url =
         response.request.method + ': ' + response.request.uri.toString();
     final extra = response.extra;
@@ -150,4 +160,3 @@ class DSqliteStorage extends DCacheStorage {
     return true;
   }
 }
-
